@@ -13,9 +13,13 @@
           window.onload = function () {
             setInterval(executar, 1000 / 30);
           }
+
+            var Posicaojogador1 = Posicaojogador2 = 100;
             var posicaoBolaX = posicaoBolaY = 10;
-            var velocidadeBolaPosicaoX = velocidadeBolaPosicaoY = 5;
-            
+            var velocidadeBolaPosicaoX = velocidadeBolaPosicaoY = 10;
+            var pontuacaoJogador1 = pontuacaoJogador2 = 0; 
+           
+
           function executar(){
             //todo codigo do jogo
             var folhaDesenho = document.getElementById("folha");
@@ -24,35 +28,69 @@
             var larguraCampo = 600;
             var AlturaCampo = 500;
             var larguraLinha = 5;
-            var larguraBola = 20;
+            var larguraBola = 10;
             var alturaRaquete = 100;
+            var larguraRaquete = 11;
+            var efeitoRaquete = 0.3;
             
             
             areaDesenho.fillStyle ='#286047';
             areaDesenho.fillRect (0,0,larguraCampo,AlturaCampo);
             
             areaDesenho.fillStyle ='#ffffff';
-            // linha do meio
-            areaDesenho.fillRect (larguraCampo/2 - larguraLinha/2,0, larguraLinha,500);
-            //raquete 1
-            areaDesenho.fillRect (0,200,larguraLinha,alturaRaquete)
-            //raquete 2
-            areaDesenho.fillRect (larguraCampo - larguraLinha,200,larguraLinha,alturaRaquete)
-            // Bola "quadrada"
-            areaDesenho.fillRect (posicaoBolaX,posicaoBolaY,larguraBola,larguraBola)
 
-          
+            // linha do meio
+            areaDesenho.fillRect (larguraCampo /2 - larguraLinha /2, 0, larguraLinha, AlturaCampo);
+            
+            //raquete 1 e 2
+            areaDesenho.fillRect (0,Posicaojogador1,larguraRaquete,alturaRaquete);
+            areaDesenho.fillRect (larguraCampo - larguraRaquete,Posicaojogador2,larguraRaquete,alturaRaquete);
+
+            // Bola "quadrada"
+            areaDesenho.fillRect (posicaoBolaX,posicaoBolaY,larguraBola,larguraBola);
+
+            //escrever a pontuação dos jogadores
+
+            areaDesenho.fillText("Humano - " + pontuacaoJogador1 + "pontos ", 100,100 );
+            areaDesenho.fillText("maquina - " + pontuacaoJogador2 + "pontos ", larguraCampo - 200,100 );
+
             posicaoBolaX = posicaoBolaX + velocidadeBolaPosicaoX  ;
             posicaoBolaY = posicaoBolaY + velocidadeBolaPosicaoY;
-
+          
+                  //verifica a lateral superior
             if (posicaoBolaY < 0 && velocidadeBolaPosicaoY < 0) {
-              //verifica a lateral superior
+            
+              velocidadeBolaPosicaoY = -velocidadeBolaPosicaoY;
+            }
+                // verifica a lateral inferior
+            if (posicaoBolaY > AlturaCampo && velocidadeBolaPosicaoY > 0) {
+              
               velocidadeBolaPosicaoY = -velocidadeBolaPosicaoY;
             }
 
-            if (posicaoBolaY > AlturaCampo && velocidadeBolaPosicaoY > 0) {
-              // verifica a lateral inferior
-              velocidadeBolaPosicaoY = -velocidadeBolaPosicaoY;
+            if (posicaoBolaX < 0) {
+              if (posicaoBolaY > Posicaojogador1 && posicaoBolaY < Posicaojogador1 + alturaRaquete) {
+               velocidadeBolaPosicaoX = -velocidadeBolaPosicaoX; 
+
+               var diferencaY = posicaoBolaY - (Posicaojogador1 + alturaRaquete / 2);
+               velocidadeBolaPosicaoY = diferencaY * efeitoRaquete;
+              
+              }else{
+
+                pontuacaoJogador2++;
+              }
+            } 
+              if (posicaoBolaX > larguraCampo) {
+                
+                if (posicaoBolaY > Posicaojogador2 && posicaoBolaY < Posicaojogador2 + alturaRaquete){
+                velocidadeBolaPosicaoX = -velocidadeBolaPosicaoX;
+
+                var diferencaY = posicaoBolaY - (Posicaojogador2 + alturaRaquete / 2);
+                velocidadeBolaPosicaoY = diferencaY * efeitoRaquete;
+
+              }else{
+                pontuacaoJogador1++;
+              }
             }
           }
             </script>
