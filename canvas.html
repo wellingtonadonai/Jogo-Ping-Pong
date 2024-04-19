@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo Pingpong</title>
+</head>
+<body>
+
+    <canvas id ="folha" width="600" height="500"></canvas>
+        <script>
+          var folhaDesenho = document.getElementById("folha");
+          var areaDesenho = folhaDesenho.getContext("2d");
+
+          var larguraCampo = 600;
+          var AlturaCampo = 500;
+          var larguraLinha = 5;
+          var larguraBola = 20;
+          var posicaoBolaX = posicaoBolaY = 10;
+          var alturaRaquete = 100;
+           
+          areaDesenho.fillStyle ='#286047';
+          areaDesenho.fillRect (0,0,larguraCampo,AlturaCampo);
+
+          areaDesenho.fillStyle ='#ffffff';
+           // linha do meio
+           areaDesenho.fillRect (larguraCampo/2 - larguraLinha/2,0, larguraLinha,500);
+           //raquete 1
+          areaDesenho.fillRect (0,200,larguraLinha,alturaRaquete)
+           //raquete 2
+          areaDesenho.fillRect (larguraCampo - larguraLinha,200,larguraLinha,alturaRaquete)
+
+          var contador = 0;
+
+          while (contador < 20) {
+
+            posicaoBolaX = posicaoBolaY + 1;
+            posicaoBolaY = posicaoBolaX + 1;
+
+            contador = contador + 1;
+
+            areaDesenho.fillRect (posicaoBolaX,posicaoBolaY,larguraBola,larguraBola)
+            
+          }
+           // Bola "quadrada"
+        </script>
+</body>
+</html>
