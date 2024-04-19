@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jogo Pingpong</title>
 </head>
-<body>
+  <body>
 
     <canvas id ="folha" width="600" height="500"></canvas>
         <script>
           
           window.onload = function () {
-            setInterval(executar, 1000 / 30);
+          setInterval(executar, 1000 / 30);
           }
 
             var Posicaojogador1 = Posicaojogador2 = 100;
@@ -69,32 +69,37 @@
             }
 
             if (posicaoBolaX < 0) {
+
               if (posicaoBolaY > Posicaojogador1 && posicaoBolaY < Posicaojogador1 + alturaRaquete) {
                velocidadeBolaPosicaoX = -velocidadeBolaPosicaoX; 
 
-               var diferencaY = posicaoBolaY - (Posicaojogador1 + alturaRaquete / 2);
-               velocidadeBolaPosicaoY = diferencaY * efeitoRaquete;
+              var diferencaY = posicaoBolaY - (Posicaojogador1 + alturaRaquete / 2);
+              velocidadeBolaPosicaoY = diferencaY * efeitoRaquete;
               
               }else{
 
-                pontuacaoJogador2++;
+              pontuacaoJogador2++;
+
               }
             } 
-              if (posicaoBolaX > larguraCampo) {
+            if (posicaoBolaX > larguraCampo) {
                 
-                if (posicaoBolaY > Posicaojogador2 && posicaoBolaY < Posicaojogador2 + alturaRaquete){
-                velocidadeBolaPosicaoX = -velocidadeBolaPosicaoX;
+              if (posicaoBolaY > Posicaojogador2 && posicaoBolaY < Posicaojogador2 + alturaRaquete){
+              velocidadeBolaPosicaoX = -velocidadeBolaPosicaoX;
 
-                var diferencaY = posicaoBolaY - (Posicaojogador2 + alturaRaquete / 2);
-                velocidadeBolaPosicaoY = diferencaY * efeitoRaquete;
+              var diferencaY = posicaoBolaY - (Posicaojogador2 + alturaRaquete / 2);
+              velocidadeBolaPosicaoY = diferencaY * efeitoRaquete;
 
               }else{
-                pontuacaoJogador1++;
+
+              pontuacaoJogador1++;
+
               }
             }
           }
-            </script>
-    </body>
+
+        </script>
+  </body>
 </html>
 
             
