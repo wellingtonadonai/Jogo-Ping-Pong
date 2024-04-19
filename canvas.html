@@ -14,7 +14,8 @@
             setInterval(executar, 1000 / 30);
           }
             var posicaoBolaX = posicaoBolaY = 10;
-          
+            var velocidadeBolaPosicaoX = velocidadeBolaPosicaoY = 5;
+            
           function executar(){
             //todo codigo do jogo
             var folhaDesenho = document.getElementById("folha");
@@ -25,6 +26,7 @@
             var larguraLinha = 5;
             var larguraBola = 20;
             var alturaRaquete = 100;
+            
             
             areaDesenho.fillStyle ='#286047';
             areaDesenho.fillRect (0,0,larguraCampo,AlturaCampo);
@@ -39,11 +41,22 @@
             // Bola "quadrada"
             areaDesenho.fillRect (posicaoBolaX,posicaoBolaY,larguraBola,larguraBola)
 
-            posicaoBolaX = posicaoBolaX + 1;
-            posicaoBolaY = posicaoBolaY + 1;
+          
+            posicaoBolaX = posicaoBolaX + velocidadeBolaPosicaoX  ;
+            posicaoBolaY = posicaoBolaY + velocidadeBolaPosicaoY;
+
+            if (posicaoBolaY < 0 && velocidadeBolaPosicaoY < 0) {
+              //verifica a lateral superior
+              velocidadeBolaPosicaoY = -velocidadeBolaPosicaoY;
+            }
+
+            if (posicaoBolaY > AlturaCampo && velocidadeBolaPosicaoY > 0) {
+              // verifica a lateral inferior
+              velocidadeBolaPosicaoY = -velocidadeBolaPosicaoY;
+            }
           }
             </script>
-</body>
+    </body>
 </html>
 
             
