@@ -13,21 +13,20 @@
           window.onload = function () {
           setInterval(executar, 1000 / 30);
           }
-            var folhaDesenho = document.getElementById("folha");
-            var areaDesenho = folhaDesenho.getContext("2d");
-            
-            var larguraCampo = 600;
-            var AlturaCampo = 500;
-            var larguraLinha = 5;
-            var larguraBola = 10;
-            var alturaRaquete = 100;
-            var larguraRaquete = 11;
-            var efeitoRaquete = 0.3;
-            var velocidadeJogador2 = 8;
-            var Posicaojogador1 = Posicaojogador2 = 100;
-            var posicaoBolaX = posicaoBolaY = 10;
-            var velocidadeBolaPosicaoX = velocidadeBolaPosicaoY = 10;
-            var pontuacaoJogador1 = pontuacaoJogador2 = 0; 
+            let folhaDesenho = document.getElementById("folha");
+            let areaDesenho = folhaDesenho.getContext("2d");
+            let larguraCampo = 600;
+            let AlturaCampo = 500;
+            let larguraLinha = 5;
+            let larguraBola = 10;
+            let alturaRaquete = 100;
+            let larguraRaquete = 11;
+            let efeitoRaquete = 0.3;
+            let velocidadeJogador2 = 8;
+            let Posicaojogador1 = Posicaojogador2 = 100;
+            let posicaoBolaX = posicaoBolaY = 10;
+            let velocidadeBolaPosicaoX = velocidadeBolaPosicaoY = 10;
+            let pontuacaoJogador1 = pontuacaoJogador2 = 0; 
 
           folhaDesenho.addEventListener('mousemove', function(e) {
             Posicaojogador1 = e.clientY - alturaRaquete / 2;
@@ -77,7 +76,7 @@
                 if (posicaoBolaY > Posicaojogador1 && posicaoBolaY < Posicaojogador1 + alturaRaquete) {
                 velocidadeBolaPosicaoX = -velocidadeBolaPosicaoX; 
 
-                var diferencaY = posicaoBolaY - (Posicaojogador1 + alturaRaquete / 2);
+                let diferencaY = posicaoBolaY - (Posicaojogador1 + alturaRaquete / 2);
                 velocidadeBolaPosicaoY = diferencaY * efeitoRaquete;
               
               }else{
@@ -95,7 +94,7 @@
                 if (posicaoBolaY > Posicaojogador2 && posicaoBolaY < Posicaojogador2 + alturaRaquete){
                 velocidadeBolaPosicaoX = -velocidadeBolaPosicaoX;
 
-                var diferencaY = posicaoBolaY - (Posicaojogador2 + alturaRaquete / 2);
+                let diferencaY = posicaoBolaY - (Posicaojogador2 + alturaRaquete / 2);
                 velocidadeBolaPosicaoY = diferencaY * efeitoRaquete;
 
               }else{
